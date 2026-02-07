@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { quiz } from './quiz';
 
 export const Quizapp = () => {
@@ -29,10 +29,10 @@ export const Quizapp = () => {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [timeLeft, isSubmitted]);
+    }, [timeLeft, isSubmitted, handleSubmit]);
 
 
-    const handleSubmit = () => {
+    const handleSubmit = useCallback(() => {
         let tempScore = 0;
         quiz.forEach((q, i) => {
             if (isAnswered[i] === q.answer)
@@ -41,7 +41,7 @@ export const Quizapp = () => {
         setScore(tempScore);
         setIsSubmitted(true);
         // alert("Quiz Completed Successfully") // Removed alert for better UX
-    }
+    }, [isAnswered]);
 
     useEffect(() => {
         if (isSubmitted && score === quiz.length) {
