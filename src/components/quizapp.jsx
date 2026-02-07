@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { quiz } from './quiz';
 
+// timer, status color of total marks and text display , 
+
 export const Quizapp = () => {
     const optionLabels = ["a)", "b)", "c)", "d)"]
     const [isAnswered, setIsAnswered] = useState({});
@@ -24,6 +26,7 @@ export const Quizapp = () => {
         })
         setScore(tempScore);
         setIsSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         // alert("Quiz Completed Successfully") // Removed alert for better UX
     }, [isAnswered]);
 
@@ -67,7 +70,7 @@ export const Quizapp = () => {
             {/* Header / Title */}
             <div className='mb-8 text-center'>
                 <h1 className='text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2'>
-                    Super Quiz Challenge
+                    Super Quiz Challenge By Ankit
                 </h1>
                 <p className='text-gray-500 text-lg'>Test your knowledge!</p>
             </div>
@@ -97,8 +100,8 @@ export const Quizapp = () => {
                             </div>
                             <div className='flex flex-col bg-white p-4 rounded-xl shadow-sm border border-gray-100 min-w-[120px]'>
                                 <span className='text-sm text-gray-500 uppercase tracking-wider font-semibold'>Status</span>
-                                <span className={`text-xl font-bold ${score > 3 ? "text-green-600" : "text-orange-500"}`}>
-                                    {score > 3 ? "Excellent!" : score === 0 ? "Don't worry Try again" : "Good Effort Try Again"}
+                                <span className={`text-xl font-bold ${score > 15 ? "text-green-600" : "text-orange-500"}`}>
+                                    {score > 15 ? "Excellent!" : score === 0 ? "Don't worry Try again" : "Good Effort Try Again"}
                                 </span>
                             </div>
                         </div>
