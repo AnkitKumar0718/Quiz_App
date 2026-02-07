@@ -8,7 +8,7 @@ export const Quizapp = () => {
     const [isAnswered, setIsAnswered] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [score, setScore] = useState(false);
-    const TOTAL_TIME = 5 * 60; // 5 minutes in seconds
+    const TOTAL_TIME = 7 * 60; // 5 minutes in seconds
     const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
 
     const handleAnswer = (qIndex, ansIndex) => {
