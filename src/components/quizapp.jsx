@@ -16,6 +16,17 @@ export const Quizapp = () => {
         ))
     }
 
+    const handleSubmit = useCallback(() => {
+        let tempScore = 0;
+        quiz.forEach((q, i) => {
+            if (isAnswered[i] === q.answer)
+                tempScore++
+        })
+        setScore(tempScore);
+        setIsSubmitted(true);
+        // alert("Quiz Completed Successfully") // Removed alert for better UX
+    }, [isAnswered]);
+
     useEffect(() => {
         if (isSubmitted) return;
 
@@ -30,18 +41,6 @@ export const Quizapp = () => {
 
         return () => clearInterval(timer);
     }, [timeLeft, isSubmitted, handleSubmit]);
-
-
-    const handleSubmit = useCallback(() => {
-        let tempScore = 0;
-        quiz.forEach((q, i) => {
-            if (isAnswered[i] === q.answer)
-                tempScore++
-        })
-        setScore(tempScore);
-        setIsSubmitted(true);
-        // alert("Quiz Completed Successfully") // Removed alert for better UX
-    }, [isAnswered]);
 
     useEffect(() => {
         if (isSubmitted && score === quiz.length) {
